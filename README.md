@@ -1,18 +1,26 @@
 # Kata de Arquitetura: Sincronização de Estoque Multi-Canal
 
-## O Problema
+## A História
 
-A RetailMax precisa sincronizar estoque entre seus canais de venda em tempo real. Atualmente, cada sistema mantém seu próprio estoque, causando vendas perdidas e clientes frustrados.
+Era uma segunda-feira quando Carlos Mendes, CEO da RetailMax, recebeu a ligação que mudaria tudo. Um cliente furioso havia dirigido 40 km para comprar um produto que constava como "disponível" no site, mas estava em falta na loja há uma semana.
 
-## Contexto
+Carlos lembrou dos números da última reunião: R$ 2,3 milhões em vendas perdidas no trimestre por problemas de estoque. O pior era saber que muitas vendas foram canceladas desnecessariamente - os produtos existiam, mas em outros pontos de venda.
 
-### Sistemas Atuais
+A gota d'água veio quando perderam um grande cliente B2B. Prometeram entregar 500 notebooks baseando-se nos números do sistema, mas na hora da entrega descobriram que metade já havia sido vendida online. O cliente cancelou e ainda postou uma avaliação negativa que viralizou.
+
+"Nossos sistemas não conversam em tempo real", explicava Roberto, diretor de TI. "Uma venda no e-commerce pode levar 24 horas para aparecer no ERP. Enquanto isso, as lojas continuam vendendo produtos que não existem."
+
+Carlos chamou Roberto: "Preciso de uma solução urgente. Nossos clientes merecem saber se um produto está disponível, independente de onde queiram comprar."
+
+## O Contexto Atual
+
+### Sistemas da RetailMax
 - 20 lojas físicas com PDVs
-- 1 e-commerce (Shopify)
+- 1 e-commerce (Shopify) - 35% das vendas
 - 1 ERP legado (Java + Oracle)
 - 1 centro de distribuição com WMS
 
-### Problemas
+### Os Problemas
 - Sincronização apenas 1x por dia (batch noturno)
 - Produtos vendidos online quando em falta no CD
 - Lojas recusando vendas de produtos disponíveis
